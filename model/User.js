@@ -24,7 +24,7 @@ exports.insert = ( data, cb ) => {      // exports는 모듈 밖으로 보내는
 
     cnn.query(sql, (err, rows) => {
         if ( err ) throw err;
-        cd( data.id );
+        cb( data.id );
     });
 }
 
