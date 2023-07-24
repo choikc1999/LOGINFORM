@@ -9,6 +9,7 @@ exports.index = (req, res) => {
 }
 
 //User 정보 저장하기
+// 
 exports.post_user = (req, res) => {
 
     User.insert( req.body, function (result) {  
@@ -22,6 +23,7 @@ exports.login = (req, res) => {
 }
 
 //login 시도
+// 
 exports.post_login = (req, res) => {
     User.select( req.body.id, req.body.password, function (result) {
         if (result == null) {

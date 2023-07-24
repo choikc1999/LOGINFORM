@@ -2,10 +2,11 @@
 const mysql = require("mysql");
 
 const cnn = mysql.createConnection({
-    host: '3306',
+    host: 'localhost',
     user: 'root',
     password: 'choikc0901!',
-    database: 'signup'
+    database: 'signup',
+    port: "3306",
 });
 
 //sql 연결 실패시 보여주는 코드
@@ -32,7 +33,7 @@ exports.insert = ( data, cb ) => {      // exports는 모듈 밖으로 보내는
 exports.select = ( id, password, cb ) => {
     var sql = `SELECT * FROM user WHERE id='${id}' limit 1`; //여기서 limit은 최소값이 아닌? select limit이기 때문에  1개 보여달라는 의미로 쓴다.
     
-    cnn.query(sql, (err, rows) => {
+    cnn.query(sql, (err, rows) => {     
         if ( err ) throw err;
         cb( rows[0] );
     });

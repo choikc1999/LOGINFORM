@@ -3,7 +3,7 @@
 // 모듈 변수 선언
 const express = require("express");
 const app = express();
-const prot = 8080;
+const port = 8080;
 const bodyParser = require("body-parser");
 
 //view는 ejs 확장자를 사용할거다
@@ -27,10 +27,11 @@ app.use(express.urlencoded({extended:true}));
 app.use( bodyParser.json() );
 
 // 우리는 router이라는 변수를 촤상위 router폴더안에 시작경로를 지정할 것이다.라는 뜻으로 해석
-const router = require("/");
-app.use("/index.html", router);
+const router = require("./routes");
+app.use("/", router);
 
 // 서버오픈시 포트번호 알려줌
-app.listen(prot, () => {
+// 없어도 상관없는 구문
+app.listen(port, () => {
     console.log(  "Server Port: ", port);
 })
